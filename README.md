@@ -1,38 +1,65 @@
-# sv
+# Doyun Home
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A personal portfolio website built with SvelteKit, featuring interactive 3D elements powered by Three.js.
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Framework**: SvelteKit
+- **Language**: TypeScript
+- **Styling**: TailwindCSS
+- **3D Rendering**: Three.js
+- **Animation**: GSAP
+- **Code Quality**: ESLint, Prettier
+- **Internationalization**: Paraglide (i18n)
 
+## Key Features
+
+### Hero Section
+- 🌍 Interactive 3D Globe using Three.js
+  - Mouse-controlled rotation
+  - Auto-rotation animation
+  - Major city markers
+- ✨ Text animations with GSAP
+- 🎨 Modern UI/UX Design
+  - Gradient background
+  - Responsive layout
+  - Interactive CTA button
+
+## Development Setup
+
+1. Clone the repository
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git clone [repository-url]
+cd doyun-home
 ```
 
-## Developing
+2. Install dependencies
+```bash
+npm install
+```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+3. Start development server
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+4. View in browser
+- Development server runs at http://localhost:5173
 
-To create a production version of your app:
+## Project Structure
 
-```bash
-npm run build
+```
+src/
+├── lib/
+│   └── components/
+│       ├── Globe.svelte    # Three.js Globe Component
+│       └── Hero.svelte     # Hero Section Component
+├── routes/
+│   └── +page.svelte       # Main Page
+└── static/
+    └── earth-texture.jpg  # Globe Texture Image
 ```
 
-You can preview the production build with `npm run preview`.
+## License
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+MIT License
