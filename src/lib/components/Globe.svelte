@@ -27,12 +27,13 @@
     container.appendChild(renderer.domElement);
 
     // Globe creation
-    const geometry = new THREE.SphereGeometry(1, 32, 32);
+    const geometry = new THREE.SphereGeometry(1, 64, 64);
     const texture = new THREE.TextureLoader().load('/earth-texture.jpg');
-    const material = new THREE.MeshPhongMaterial({
+    const material = new THREE.MeshStandardMaterial({
       map: texture,
-      specular: new THREE.Color(0x333333),
-      shininess: 5
+      metalness: 0.1,
+      roughness: 0.8,
+      envMapIntensity: 1.0
     });
     globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
@@ -40,18 +41,28 @@
     // Add city markers
     cities.forEach(city => {
       const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
-      const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+      const markerMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xff0000,
+        emissive: 0xff0000,
+        emissiveIntensity: 0.5
+      });
       const marker = new THREE.Mesh(markerGeometry, markerMaterial);
       marker.position.copy(city.position);
       scene.add(marker);
     });
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.0);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
+
+    // 추가 조명
+    const pointLight = new THREE.PointLight(0xffffff, 0.8);
+    pointLight.position.set(-5, -3, -5);
+    scene.add(pointLight);
 
     // Camera position
     camera.position.z = 3;
