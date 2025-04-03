@@ -35,6 +35,9 @@
 		"vite": "^6.2.5"
 	},
 	"dependencies": {
-		"@inlang/paraglide-js": "^2.0.0"
+		"@inlang/paraglide-js": "^2.0.0",
+		"@types/three": "^0.175.0",
+		"gsap": "^3.12.7",
+		"three": "^0.175.0"
 	}
 }
