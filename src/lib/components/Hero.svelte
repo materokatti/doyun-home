@@ -47,9 +47,6 @@
     <div class="content">
       <h1 bind:this={titleElement} class="initial-state">Curious mind with a global soul.</h1>
       <p bind:this={subtitleElement} class="initial-state">A frontend developer exploring the world through code and culture.</p>
-      <button bind:this={buttonElement} on:click={scrollToAbout} class="cta-button initial-state">
-        Discover More
-      </button>
     </div>
   </section>
   
@@ -83,9 +80,11 @@
       font-size: 4rem;
       font-weight: 700;
       margin-bottom: 1rem;
-      background: linear-gradient(45deg, #60a5fa, #34d399);
+      position: relative;
+      background: linear-gradient(45deg, #ffd24c, #ffb925);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.9));
     }
   
     p {
@@ -94,43 +93,4 @@
       opacity: 0.9;
     }
   
-    .cta-button {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      background: transparent;
-      border: 2px solid #60a5fa;
-      color: #60a5fa;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      pointer-events: auto;
-    }
-  
-    .cta-button:hover {
-      background: #60a5fa;
-      color: white;
-      transform: translateY(-2px);
-    }
-  
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
-      transition: 0.5s;
-    }
-  
-    .cta-button:hover::before {
-      left: 100%;
-    }
   </style>
