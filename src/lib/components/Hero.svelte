@@ -5,7 +5,8 @@
   
     let titleElement: HTMLElement;
     let subtitleElement: HTMLElement;
-    let buttonElement: HTMLElement;
+    let scrollArrow: HTMLElement;
+    let isScrolling = false;
   
     onMount(() => {
       // Fade in animations
@@ -23,20 +24,27 @@
         delay: 0.7,
         ease: 'power3.out',
       });
-  
-      gsap.to(buttonElement, {
-        duration: 1,
-        y: 0,
-        opacity: 1,
-        delay: .7,
-        ease: 'power3.out',
+
+      // Scroll arrow animation
+      gsap.to(scrollArrow, {
+        y: 10,
+        duration: 1.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut'
       });
     });
   
-    function scrollToAbout() {
+    function scrollToNextSection() {
+      if (isScrolling) return;
+      
+      isScrolling = true;
       const aboutSection = document.getElementById('about');
       if (aboutSection) {
         aboutSection.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          isScrolling = false;
+        }, 1000);
       }
     }
   </script>
@@ -47,6 +55,12 @@
     <div class="content">
       <h1 bind:this={titleElement} class="initial-state">Curious mind with a global soul.</h1>
       <p bind:this={subtitleElement} class="initial-state">A frontend developer exploring the world through code and culture.</p>
+    </div>
+
+    <div class="scroll-arrow" bind:this={scrollArrow} on:click={scrollToNextSection}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
     </div>
   </section>
   
@@ -92,7 +106,23 @@
       margin-bottom: 2rem;
       opacity: 0.9;
     }
-  
+
+    .scroll-arrow {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-arrow:hover {
+      opacity: 1;
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 2.5rem;
@@ -107,6 +137,10 @@
       .content {
         padding: 1rem;
       }
+
+      .scroll-arrow {
+        bottom: 1.5rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -116,6 +150,10 @@
 
       p {
         font-size: 1rem;
+      }
+
+      .scroll-arrow {
+        bottom: 1rem;
       }
     }
   </style>
