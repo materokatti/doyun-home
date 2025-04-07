@@ -66,8 +66,8 @@
 
 <section class="about" id="about">
     <div class="container">
-        <div class="card" bind:this={cardElement}>
-            <div class="left-section">
+        <div class="layout">
+            <div class="card" bind:this={cardElement}>
                 <div class="profile-image" bind:this={profileElement}>
                     <img src="doyun.png" alt="Profile" />
                 </div>
@@ -81,6 +81,7 @@
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+
             <div class="right-section">
                 <div class="content-wrapper">
                     <h2 bind:this={titleElement}>Hello</h2>
@@ -111,25 +112,40 @@
     .about {
         min-height: 100vh;
         padding: 2rem;
-        background-color: #f2ece4;
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
+        background: linear-gradient(to right, #E6D9CD 30%, #FFF 30%);
     }
 
     .container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .layout {
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+        margin-left: -2rem;
     }
 
     .card {
-        display: flex;
         background: white;
         border-radius: 0;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        padding: 3rem 2rem;
+        text-align: center;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f9f5f1;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeIn 1s ease forwards;
@@ -140,16 +156,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-    }
-
-    .left-section {
-        background-color: #f9f5f1;
-        padding: 3rem 2rem;
-        text-align: center;
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .profile-image {
@@ -167,7 +173,7 @@
         object-fit: cover;
     }
 
-    .left-section h1 {
+    .card h1 {
         font-size: 2.5rem;
         font-weight: 700;
         margin: 0;
@@ -175,7 +181,7 @@
         font-family: 'Arial', sans-serif;
     }
 
-    .left-section h2 {
+    .card h2 {
         font-size: 1rem;
         font-weight: 400;
         margin: 0.5rem 0 1.5rem;
@@ -209,10 +215,6 @@
 
     .right-section {
         flex: 1;
-        padding: 4rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     .content-wrapper {
@@ -282,21 +284,33 @@
     }
 
     @media (max-width: 1024px) {
-        .card {
+        .layout {
             flex-direction: column;
+            gap: 2rem;
+            margin-left: 0;
         }
 
-        .left-section {
+        .card {
             width: 100%;
+            max-width: 400px;
             padding: 2rem;
         }
 
         .right-section {
-            padding: 2rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            margin: 0 auto;
         }
 
         .right-section h2 {
             font-size: 4rem;
+        }
+
+        .about {
+            background: linear-gradient(to bottom, #E6D9CD 40%, #FFF 40%);
         }
     }
 
