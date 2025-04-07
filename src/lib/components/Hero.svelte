@@ -44,7 +44,9 @@
         aboutSection.scrollIntoView({ behavior: 'smooth' });
         setTimeout(() => {
           isScrolling = false;
-        }, 1000);
+        }, 1500);
+      } else {
+        isScrolling = false;
       }
     }
   </script>
@@ -57,7 +59,13 @@
       <p bind:this={subtitleElement} class="initial-state">A frontend developer exploring the world through code and culture.</p>
     </div>
 
-    <div class="scroll-arrow" bind:this={scrollArrow} on:click={scrollToNextSection}>
+    <div class="scroll-arrow" 
+         bind:this={scrollArrow} 
+         on:click={scrollToNextSection}
+         role="button"
+         tabindex="0"
+         on:keydown={(e) => e.key === 'Enter' && scrollToNextSection()}
+    >
       <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M14 26L24 36L34 26M14 12L24 22L34 12" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -117,6 +125,9 @@
       z-index: 2;
       opacity: 0.8;
       transition: opacity 0.3s ease;
+      background: none;
+      border: none;
+      padding: 0;
     }
 
     .scroll-arrow:hover {
