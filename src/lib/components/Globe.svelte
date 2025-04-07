@@ -10,13 +10,6 @@
   let globe: THREE.Mesh;
   let controls: OrbitControls;
 
-  const cities = [
-    { name: 'Seoul', position: new THREE.Vector3(0.8, 0.5, 0.3) },
-    { name: 'San Francisco', position: new THREE.Vector3(-0.8, 0.3, 0.5) },
-    { name: 'London', position: new THREE.Vector3(0.2, 0.4, -0.8) },
-    { name: 'Tokyo', position: new THREE.Vector3(0.9, 0.2, 0.3) }
-  ];
-
   onMount(() => {
     // Scene setup
     scene = new THREE.Scene();
@@ -28,7 +21,7 @@
 
     // Globe creation
     const geometry = new THREE.SphereGeometry(1, 64, 64);
-    const texture = new THREE.TextureLoader().load('/earth-texture.jpg');
+    const texture = new THREE.TextureLoader().load('/moonTexture.png');
     const material = new THREE.MeshStandardMaterial({
       map: texture,
       metalness: 0.1,
@@ -37,19 +30,6 @@
     });
     globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
-
-    // Add city markers
-    cities.forEach(city => {
-      const markerGeometry = new THREE.SphereGeometry(0.02, 16, 16);
-      const markerMaterial = new THREE.MeshStandardMaterial({ 
-        color: 0xff0000,
-        emissive: 0xff0000,
-        emissiveIntensity: 0.5
-      });
-      const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-      marker.position.copy(city.position);
-      scene.add(marker);
-    });
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
