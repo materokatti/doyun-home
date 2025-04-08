@@ -21,7 +21,7 @@
 
     // Globe creation
     const geometry = new THREE.SphereGeometry(1, 64, 64);
-    const texture = new THREE.TextureLoader().load('/moonTexture.png');
+    const texture = new THREE.TextureLoader().load('/profile.png');
     const material = new THREE.MeshStandardMaterial({
       map: texture,
       metalness: 0.1,
