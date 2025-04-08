@@ -55,8 +55,8 @@
     <Globe />
     
     <div class="content">
-      <h1 bind:this={titleElement} class="initial-state">Curious mind with a global soul.</h1>
-      <p bind:this={subtitleElement} class="initial-state">A frontend developer exploring the world through code and culture.</p>
+      <h1 bind:this={titleElement} class="initial-state">Hey there! I'm Doyun.</h1>
+      <p bind:this={subtitleElement} class="initial-state">I care about writing readable code and building great things together.</p>
     </div>
 
     <div class="scroll-arrow" 

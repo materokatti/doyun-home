@@ -94,13 +94,10 @@
 
                     <div class="content" bind:this={contentElement}>
                         <p>
-                            Hi! As a frontend developer, I prioritize user experience and 
-                            enjoy creating creative web solutions.
-                        </p>
-                        <p>
-                            I love learning new technologies and am particularly interested in 
-                            the latest web development trends and user interface design.
-                        </p>
+                            I'm a developer who loves learning languages—both human and programming ones.  
+                            Traveling the world and meeting people from different cultures inspires me,  
+                            and I enjoy finding effective, thoughtful ways to solve problems through code.
+                          </p>
                     </div>
                 </div>
             </div>
