@@ -89,7 +89,9 @@
                     
                     <div class="buttons">
                         <button class="btn primary">RESUME</button>
-                        <button class="btn secondary">PROJECTS</button>
+                        <a href="https://devstory.vercel.app/" target="_blank" rel="noopener noreferrer">
+                            <button class="btn secondary">PROJECTS</button>
+                        </a>
                     </div>
 
                     <div class="content" bind:this={contentElement}>
