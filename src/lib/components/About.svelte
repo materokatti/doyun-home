@@ -75,10 +75,15 @@
                 <h2>Frontend Developer</h2>
                 <div class="divider"></div>
                 <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/materokatti" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/doyun-hwang-397855214/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCNF2FGsT3y6Xvbqv_9KJ0pA" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
 
@@ -200,18 +205,18 @@
 
     .social-links {
         display: flex;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 1rem;
+        margin-top: 1rem;
     }
 
     .social-links a {
-        color: #333;
-        font-size: 1.2rem;
+        color: var(--text-color);
+        font-size: 1.5rem;
         transition: color 0.3s ease;
     }
 
     .social-links a:hover {
-        color: #4169E1;
+        color: var(--accent-color);
     }
 
     .right-section {
