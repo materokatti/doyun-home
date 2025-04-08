@@ -13,7 +13,7 @@
   onMount(() => {
     // Scene setup
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000000);
+    scene.background = new THREE.Color(0x222222);
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -24,18 +24,18 @@
     const texture = new THREE.TextureLoader().load('/profile.png');
     const material = new THREE.MeshStandardMaterial({
       map: texture,
-      metalness: 0.1,
-      roughness: 0.8,
+      metalness: 0.7,
+      roughness: 0.1,
       envMapIntensity: 1.0
     });
     globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
     
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 2.0);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 4.0);
     directionalLight.position.set(5, 3, 5);
     scene.add(directionalLight);
 
@@ -57,7 +57,7 @@
     function animate() {
       requestAnimationFrame(animate);
       controls.update();
-      globe.rotation.y += 0.001;
+      globe.rotation.y += 0.01;
       renderer.render(scene, camera);
     }
     animate();
