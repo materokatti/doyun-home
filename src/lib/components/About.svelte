@@ -88,7 +88,9 @@
                     <h3>Here's who I am & what I do</h3>
                     
                     <div class="buttons">
-                        <button class="btn primary">RESUME</button>
+                        <a href="/resume.pdf" download>
+                            <button class="btn primary">RESUME</button>
+                        </a>
                         <a href="https://devstory.vercel.app/" target="_blank" rel="noopener noreferrer">
                             <button class="btn secondary">PROJECTS</button>
                         </a>
