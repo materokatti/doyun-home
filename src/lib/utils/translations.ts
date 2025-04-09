@@ -19,16 +19,28 @@ let translations: TranslationKeys = {
   'hero.subtitle': ''
 };
 
+let translationsLoaded = false;
+
 export async function loadTranslations() {
   const lang = get(language);
+  console.log('Loading translations for language:', lang);
   try {
     const response = await fetch(`/translations/${lang}.json`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    console.log('Translation file response:', response);
     translations = await response.json();
+    console.log('Loaded translations:', translations);
+    translationsLoaded = true;
   } catch (error) {
     console.error('Error loading translations:', error);
+    translationsLoaded = false;
   }
 }
 
 export function t(key: keyof TranslationKeys): string {
+  console.log('Getting translation for key:', key, 'Loaded:', translationsLoaded, 'Current translations:', translations);
+  if (!translationsLoaded) return key;
   return translations[key] || key;
 } 

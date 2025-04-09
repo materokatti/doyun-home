@@ -2,13 +2,30 @@
     import { onMount } from 'svelte';
     import Globe from './Globe.svelte';
     import gsap from 'gsap';
+    import { t, loadTranslations } from '$lib/utils/translations';
+    import { language } from '$lib/stores/language';
   
     let titleElement: HTMLElement;
     let subtitleElement: HTMLElement;
     let scrollArrow: HTMLElement;
     let isScrolling = false;
+    let showContent = false;
+
+    // Subscribe to language changes
+    $: {
+      $language;  // Subscribe to the store
+      if (typeof window !== 'undefined') {  // Only run on client side
+        loadTranslations().then(() => {
+          showContent = true;
+        });
+      }
+    }
   
-    onMount(() => {
+    onMount(async () => {
+      // Initial translation load
+      await loadTranslations();
+      showContent = true;
+      
       // Fade in animations
       gsap.to(titleElement, {
         duration: 1,
@@ -55,8 +72,10 @@
     <Globe />
     
     <div class="content">
-      <h1 bind:this={titleElement} class="initial-state">Hey there! I'm Doyun.</h1>
-      <p bind:this={subtitleElement} class="initial-state">I care about writing readable code and building great things together.</p>
+      {#if showContent}
+        <h1 bind:this={titleElement} class="initial-state">{t('hero.title')}</h1>
+        <p bind:this={subtitleElement} class="initial-state">{t('hero.subtitle')}</p>
+      {/if}
     </div>
 
     <div class="scroll-arrow" 
