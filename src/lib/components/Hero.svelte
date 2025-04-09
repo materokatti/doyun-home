@@ -177,6 +177,7 @@
 
       .content {
         padding: 1rem;
+        padding-bottom: 4rem;
       }
 
       .scroll-arrow {
@@ -191,6 +192,10 @@
 
       p {
         font-size: 1rem;
+      }
+
+      .content {
+        padding-bottom: 3rem;
       }
 
       .scroll-arrow {
