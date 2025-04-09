@@ -1,7 +1,23 @@
 import { get } from 'svelte/store';
 import { language } from '$lib/stores/language';
 
-let translations: Record<string, any> = {};
+interface TranslationKeys {
+  welcome: string;
+  about: string;
+  contact: string;
+  home: string;
+  'hero.title': string;
+  'hero.subtitle': string;
+}
+
+let translations: TranslationKeys = {
+  welcome: '',
+  about: '',
+  contact: '',
+  home: '',
+  'hero.title': '',
+  'hero.subtitle': ''
+};
 
 export async function loadTranslations() {
   const lang = get(language);
@@ -13,6 +29,6 @@ export async function loadTranslations() {
   }
 }
 
-export function t(key: string): string {
+export function t(key: keyof TranslationKeys): string {
   return translations[key] || key;
 } 
