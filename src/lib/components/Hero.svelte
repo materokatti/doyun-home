@@ -10,21 +10,27 @@
     let scrollArrow: HTMLElement;
     let isScrolling = false;
     let showContent = false;
+    let currentTitle = '';
+    let currentSubtitle = '';
+
+    async function updateTranslations() {
+      await loadTranslations();
+      currentTitle = t('hero.title');
+      currentSubtitle = t('hero.subtitle');
+      showContent = true;
+    }
 
     // Subscribe to language changes
     $: {
       $language;  // Subscribe to the store
       if (typeof window !== 'undefined') {  // Only run on client side
-        loadTranslations().then(() => {
-          showContent = true;
-        });
+        updateTranslations();
       }
     }
   
     onMount(async () => {
       // Initial translation load
-      await loadTranslations();
-      showContent = true;
+      await updateTranslations();
       
       // Fade in animations
       gsap.to(titleElement, {
@@ -73,8 +79,8 @@
     
     <div class="content">
       {#if showContent}
-        <h1 bind:this={titleElement} class="initial-state">{t('hero.title')}</h1>
-        <p bind:this={subtitleElement} class="initial-state">{t('hero.subtitle')}</p>
+        <h1 bind:this={titleElement} class="initial-state">{currentTitle}</h1>
+        <p bind:this={subtitleElement} class="initial-state">{currentSubtitle}</p>
       {/if}
     </div>
 
@@ -97,10 +103,11 @@
       width: 100%;
       height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       align-items: center;
-      justify-content: center;
       overflow: hidden;
-      background: linear-gradient(to bottom, #0f172a, #1e293b);
+      background: linear-gradient(to bottom, #222, #222);
     }
   
     .content {
@@ -109,7 +116,11 @@
       text-align: center;
       color: white;
       padding: 2rem;
+      padding-bottom: 6rem;
       pointer-events: none;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
   
     .initial-state {
