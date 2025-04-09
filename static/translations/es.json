@@ -1,8 +1,14 @@
 {
   "welcome": "Bienvenido",
-  "about": "Acerca de",
+  "about": "Sobre mí",
   "contact": "Contacto",
   "home": "Inicio",
   "hero.title": "¡Hola! Soy Doyun.",
-  "hero.subtitle": "Me preocupo por escribir código legible y construir grandes cosas juntos."
+  "hero.subtitle": "Me importa escribir código legible y construir cosas increíbles juntos.",
+  "about.title": "Hola",
+  "about.subtitle": "Aquí está quién soy y qué hago",
+  "about.description": "Soy un desarrollador que ama aprender idiomas, tanto humanos como de programación. Viajar por el mundo y conocer personas de diferentes culturas me inspira, y disfruto encontrando formas efectivas y reflexivas de resolver problemas a través del código.",
+  "about.role": "Desarrollador Frontend",
+  "about.resume": "CURRÍCULUM",
+  "about.projects": "PROYECTOS"
 } 

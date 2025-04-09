@@ -3,6 +3,12 @@
   "about": "À propos",
   "contact": "Contact",
   "home": "Accueil",
-  "hero.title": "Salut ! Je suis Doyun.",
-  "hero.subtitle": "Je m'efforce d'écrire du code lisible et de construire de grandes choses ensemble."
+  "hero.title": "Salut! Je suis Doyun.",
+  "hero.subtitle": "Je m'efforce d'écrire du code lisible et de construire de belles choses ensemble.",
+  "about.title": "Bonjour",
+  "about.subtitle": "Voici qui je suis et ce que je fais",
+  "about.description": "Je suis un développeur qui aime apprendre les langues, qu'elles soient humaines ou de programmation. Voyager dans le monde et rencontrer des personnes de différentes cultures m'inspire, et j'aime trouver des moyens efficaces et réfléchis de résoudre les problèmes grâce au code.",
+  "about.role": "Développeur Frontend",
+  "about.resume": "CV",
+  "about.projects": "PROJETS"
 } 

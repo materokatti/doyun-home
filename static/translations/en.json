@@ -4,5 +4,11 @@
   "contact": "Contact",
   "home": "Home",
   "hero.title": "Hey there! I'm Doyun.",
-  "hero.subtitle": "I care about writing readable code and building great things together."
+  "hero.subtitle": "I care about writing readable code and building great things together.",
+  "about.title": "Hello",
+  "about.subtitle": "Here's who I am & what I do",
+  "about.description": "I'm a developer who loves learning languages—both human and programming ones. Traveling the world and meeting people from different cultures inspires me, and I enjoy finding effective, thoughtful ways to solve problems through code.",
+  "about.role": "Frontend Developer",
+  "about.resume": "RESUME",
+  "about.projects": "PROJECTS"
 } 

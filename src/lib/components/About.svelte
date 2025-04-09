@@ -1,14 +1,42 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import gsap from 'gsap';
+    import { t, loadTranslations } from '$lib/utils/translations';
+    import { language } from '$lib/stores/language';
 
     let titleElement: HTMLElement;
     let contentElement: HTMLElement;
     let profileElement: HTMLElement;
     let cardElement: HTMLElement;
     let isVisible = false;
+    let currentTitle = '';
+    let currentSubtitle = '';
+    let currentDescription = '';
+    let currentRole = '';
+    let currentResume = '';
+    let currentProjects = '';
 
-    onMount(() => {
+    async function updateTranslations() {
+        await loadTranslations();
+        currentTitle = t('about.title');
+        currentSubtitle = t('about.subtitle');
+        currentDescription = t('about.description');
+        currentRole = t('about.role');
+        currentResume = t('about.resume');
+        currentProjects = t('about.projects');
+    }
+
+    // Subscribe to language changes
+    $: {
+        $language;  // Subscribe to the store
+        if (typeof window !== 'undefined') {  // Only run on client side
+            updateTranslations();
+        }
+    }
+
+    onMount(async () => {
+        await updateTranslations();
+        
         // 초기 상태 설정
         gsap.set([profileElement, titleElement, contentElement], {
             opacity: 0,
@@ -72,7 +100,7 @@
                     <img src="doyun.png" alt="Profile" />
                 </div>
                 <h1>Doyun Hwang</h1>
-                <h2>Frontend Developer</h2>
+                <h2>{currentRole}</h2>
                 <div class="divider"></div>
                 <div class="social-links">
                     <a href="https://github.com/materokatti" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -89,24 +117,20 @@
 
             <div class="right-section">
                 <div class="content-wrapper">
-                    <h2 bind:this={titleElement}>Hello</h2>
-                    <h3>Here's who I am & what I do</h3>
+                    <h2 bind:this={titleElement}>{currentTitle}</h2>
+                    <h3>{currentSubtitle}</h3>
                     
                     <div class="buttons">
                         <a href="/resume.pdf" download>
-                            <button class="btn primary">RESUME</button>
+                            <button class="btn primary">{currentResume}</button>
                         </a>
                         <a href="https://devstory.vercel.app/" target="_blank" rel="noopener noreferrer">
-                            <button class="btn secondary">PROJECTS</button>
+                            <button class="btn secondary">{currentProjects}</button>
                         </a>
                     </div>
 
                     <div class="content" bind:this={contentElement}>
-                        <p>
-                            I'm a developer who loves learning languages—both human and programming ones.  
-                            Traveling the world and meeting people from different cultures inspires me,  
-                            and I enjoy finding effective, thoughtful ways to solve problems through code.
-                          </p>
+                        <p>{currentDescription}</p>
                     </div>
                 </div>
             </div>

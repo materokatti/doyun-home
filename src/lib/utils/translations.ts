@@ -8,6 +8,12 @@ interface TranslationKeys {
   home: string;
   'hero.title': string;
   'hero.subtitle': string;
+  'about.title': string;
+  'about.subtitle': string;
+  'about.description': string;
+  'about.role': string;
+  'about.resume': string;
+  'about.projects': string;
 }
 
 let translations: TranslationKeys = {
@@ -16,7 +22,13 @@ let translations: TranslationKeys = {
   contact: '',
   home: '',
   'hero.title': '',
-  'hero.subtitle': ''
+  'hero.subtitle': '',
+  'about.title': '',
+  'about.subtitle': '',
+  'about.description': '',
+  'about.role': '',
+  'about.resume': '',
+  'about.projects': ''
 };
 
 let translationsLoaded = false;
